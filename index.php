@@ -1,6 +1,7 @@
 <?php 
 	//include( 'config/arrays.php' );
 	//include( '../config/config.php' );
+	// cambio juli
 ?>
 
 <!DOCTYPE html>
