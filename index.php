@@ -1,7 +1,10 @@
 <?php 
-	//include( 'config/arrays.php' );
-	//include( '../config/config.php' );
-	// cambio juli
+	require 'autoload.php';
+
+	if(!Auth::isLogged()) {
+		header('Location: views/login.php');
+		exit;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +17,10 @@
 	<link rel="stylesheet" href="css/bootstrap.css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-	<!--<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap.js"></script> -->
 </head>
 <body>
-	
+	<div>
+		<h1>Pase login</h1>
+	</div>
 </body>
 </html>

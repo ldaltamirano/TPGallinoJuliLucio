@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Se encarga de todo lo relativo a la autenticación.
  * Incluyendo:
@@ -19,31 +18,24 @@ class Auth
 	 */
 	public function login($usuario, $password)
 	{
-		// Buscamos el usuario.
-		$user = new Usuario;
-		if($user->traerPorUsuario($usuario)) {
-			// El usuario existe!
-			// Verificamos el password.
-			if(password_verify($password, $user->password)) {
-				// El password coincide!
-				$this->loguearUsuario($user);
+		$user = new User;
+		if($user->getForUserName($usuario)) {
+			if(password_verify($password, $user->pass)) { //TODO: Getter and Setter
+				$this->loguearUser($user);
 				return true;
 			} else {
-				// :(
 				return false;
 			}
 		} else {
-			// El usuario no existe... :(
 			return false;
 		}
 	}
-
 	/** 
  	 * Marca como logueado al usuario en el sistema.
  	 *
  	 * @param Usuario $user
  	 */
-	public function loguearUsuario(Usuario $user)
+	public function loguearUser(Usuario $user)
 	{
 		$_SESSION['id_user'] = $user->id;
 		$_SESSION['usuario'] = $user->usuario;
@@ -57,7 +49,6 @@ class Auth
 		unset($_SESSION['id_user']);
 		unset($_SESSION['usuario']);
 	}
-
 	/**
 	 * Retorna true si el usuario está logueado. False de lo 
 	 * contrario.
@@ -71,8 +62,5 @@ class Auth
 		} else {
 			return false;
 		}
-
-		// Más corto:
-		// return isset($_SESSION['id_user']);
 	}
 }

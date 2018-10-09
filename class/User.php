@@ -12,24 +12,10 @@ class User {
 	private $apellido;
     private $mail;
     
-    public getForId($userName) {
+    public function getForId($idUsuario) {
         $db = DBConnection::getConnection();
-		$query = "SELECT ID, USER, PASSWORD FROM USUARIOS
+		$query = "SELECT ID, USERNAME, PASSWORD FROM USER
 				WHERE ID = ?";
-		$stmt = $db->prepare($query);
-		$stmt->execute([$userName]);
-		if($fila = $stmt->fetch()) {
-			$this->cargarDatosDeArray($fila);
-			return true;
-		} else {
-			return false;
-		}
-    }
-
-    public getForUserName($idUsuario) {
-        $db = DBConnection::getConnection();
-		$query = "SELECT ID, USER, PASSWORD FROM USUARIOS
-				WHERE USER = ?";
 		$stmt = $db->prepare($query);
 		$stmt->execute([$idUsuario]);
 		if($fila = $stmt->fetch()) {
@@ -39,4 +25,30 @@ class User {
 			return false;
 		}
     }
+
+    public function getForUserName($userName) {
+        $db = DBConnection::getConnection();
+		$query = "SELECT ID, USERNAME, PASSWORD FROM USER
+				WHERE USERNAME = ?";
+		$stmt = $db->prepare($query);
+		$stmt->execute([$userName]);
+		if($fila = $stmt->fetch()) {
+			$this->cargarDatosDeArray($fila);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Carga los datos de la $fila en el objeto.
+	 *
+	 * @param array $fila
+	 */
+	public function cargarDatosDeArray($fila)
+	{
+		$this->idUsuario	= $fila['ID'];
+		$this->userName  	= $fila['USERNAME'];
+		$this->pass 		= $fila['PASSWORD'];
+	}
 }
