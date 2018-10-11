@@ -115,10 +115,17 @@ class News implements JsonSerializable
 	public function edit() 
 	{
 		$db = DBConnection::getConnection();
-		$query = 'UPDATE NEWS SET $property
+		$query = 'UPDATE NEWS 
+                  SET date=?,title=?,information=?,category=?
                   WHERE $id=?';
         $stmt  = $db->prepare($query);
-        $stmt->execute();
+        $stmt->execute([
+            $this->id,
+            $this->date,
+            $this->title,
+            $this->information,
+            $this->category
+        ]);
 	}
 
     /**
