@@ -51,4 +51,25 @@ class User {
 		$this->userName  	= $fila['USERNAME'];
 		$this->pass 		= $fila['PASSWORD'];
 	}
+
+	/**
+	 * Devuelve el dato $ del objeto usuario
+	 */
+	 public function getID() {
+		 return $this->idUsuario;
+	 }
+
+	/**
+	 * Devuelve el dato $userName del objeto usuario
+	 */
+	public function getUserName() {
+		return $this->userName;
+	}
+
+	/**
+	 * Devuelve el dato $pass del objeto usuario
+	 */
+	public function getPass() {
+		return $this->pass;
+	}
 }

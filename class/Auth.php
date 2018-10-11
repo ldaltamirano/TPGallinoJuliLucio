@@ -20,7 +20,7 @@ class Auth
 	{
 		$user = new User;
 		if($user->getForUserName($usuario)) {
-			if(password_verify($password, $user->pass)) { //TODO: Getter and Setter
+			if($password == $user->getPass()) {
 				$this->loguearUser($user);
 				return true;
 			} else {
@@ -35,10 +35,10 @@ class Auth
  	 *
  	 * @param Usuario $user
  	 */
-	public function loguearUser(Usuario $user)
+	public function loguearUser(User $user)
 	{
-		$_SESSION['id_user'] = $user->id;
-		$_SESSION['usuario'] = $user->usuario;
+		$_SESSION['id_user'] = $user->GetID();
+		$_SESSION['usuario'] = $user->GetUserName();
 	}
 
 	/**

@@ -16,12 +16,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		ajax({
 			method: 'POST',
-			url: '../login.php',
+			url: '../actions/login.php',
 			data: datos,
 			successCallback: function(rta) {
 				let response = JSON.parse(rta);
 				if(response.status == 1) {
-					location.href = "index.php";
+					location.href = "../index.php";
 				} else {
 					location.href = "login.php";
 				}

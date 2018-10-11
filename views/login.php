@@ -18,14 +18,15 @@ require '../autoload.php';
 		<p>Completá los datos para ingresar al sistema.</p>
 
 		<?php
+		print_r($_SESSION);
 		if(isset($_SESSION['error'])) {
 		?>
 			<div class="alert alert-danger"><?= $_SESSION['error'];?></div>
 		<?php
 			unset($_SESSION['error']);
 		}
+		
 		?>
-
 		<form id="form-login">
 			<div class="form-group">
 				<label for="user">Usuario</label>

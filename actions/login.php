@@ -1,6 +1,7 @@
 <?php
-require 'autoload.php';
+require '../autoload.php';
 $auth = new Auth;
+$auth->logout();
 $buffer = file_get_contents('php://input');
 $usuario = json_decode($buffer,true);
 if($usuario['user'] != "" && SHA1($usuario['pass']) != "") {
@@ -14,7 +15,7 @@ if($usuario['user'] != "" && SHA1($usuario['pass']) != "") {
         ]);
     } else {
         $_SESSION['error'] = "Los datos ingresados no coinciden con ningún usuario registrado. Por favor, revisá la información y probá nuevamente.";
-        //$_SESSION['input-error'] = $_POST;
+        $_SESSION['input-error'] = $usuario;
         // Session::flash('error', 'blah blah');
         echo json_encode([
             'status' => 0,
