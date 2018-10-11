@@ -22,20 +22,8 @@ class News implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        // Variante escrita a mano.
-        /*return [
-            'id_pelicula'   => $this->id_pelicula,
-            'nombre'        => $this->nombre,
-            'genero'        => $this->genero,
-            'precio'        => $this->precio,
-            'fecha'         => $this->fecha,
-            'descripcion'   => $this->descripcion // :)
-        ];*/
-        // Variante usando el array de $propiedades
         $salida = [];
         foreach($this->property as $prop) {
-            // Ej: para     $prop = 'id_pelicula';
-            // Me da:       $salida['id_pelicula'] = $this->id_pelicula
             $salida[$prop] = $this->{$prop};
         }
         return $salida;
@@ -66,7 +54,7 @@ class News implements JsonSerializable
      *
      * @param int $id
      */
-	public function bringBy($id)
+	public function bringById($id)
 	{
 		$db = DBConnection::getConnection();
         $query = 'SELECT * FROM NEWS
