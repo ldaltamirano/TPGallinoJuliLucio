@@ -34,9 +34,9 @@
             </div>
             
             <div id="botones">
-                <button class="btn btn-primary btn-block" id="saveButton">Guardar cambios</button>
-                <button class="btn btn-primary btn-block" id="deleteButton">Borrar noticia</button>
-                <button class="btn btn-primary btn-block" id="backButton">Atras</button>
+                <a class="btn btn-primary btn-block" id="saveButton">Guardar cambios</a>
+                <a href="../index.php" class="btn btn-primary btn-block" id="deleteButton">Borrar noticia</a>
+                <a href="../index.php" class="btn btn-primary btn-block" id="backButton">Atras</a>
             </div>
         </form>
 

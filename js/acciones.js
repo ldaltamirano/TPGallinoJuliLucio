@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
     let saveButton = $('saveButton');
     let deleteButton = $('deleteButton');
-    let backButton = $('backButton');
 
     let fecha = $('fecha');
     let titulo = $('titulo');
@@ -10,6 +9,29 @@ window.addEventListener('DOMContentLoaded', function() {
     let idNoticia = $('idCat');
 
     let id = idNoticia.value;
+
+    
+    saveButton.addEventListener('click', function() {
+        ajax({
+            method: 'GET',
+            url: '../actions/edit_news.php',
+            data: 'id=' + id,
+            successCallback: function(rta) {
+                let data = JSON.parse(rta);
+            }
+        });
+    });
+
+    deleteButton.addEventListener('click', function() {
+        ajax({
+            method: 'GET',
+            url: '../actions/delete_news.php',
+            data: 'id=' + id,
+            successCallback: function(rta) {
+                let data = JSON.parse(rta);
+            }
+        });
+    });
 
     ajax({
         method: 'GET',
@@ -52,9 +74,11 @@ window.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             } else {
-				location.href = "../index.php";
+				slocation.href = "index.php";
             }
         }
     });
-   
+    
+ 
+
 });
