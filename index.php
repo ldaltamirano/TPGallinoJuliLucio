@@ -1,10 +1,7 @@
 <?php 
 	require 'autoload.php';
 
-	if(!Auth::isLogged()) {
-		header('Location: views/login.php');
-		exit;
-	}
+
 ?>
 
 <!DOCTYPE html>
