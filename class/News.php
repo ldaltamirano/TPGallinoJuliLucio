@@ -112,13 +112,13 @@ class News implements JsonSerializable
      * @param int $id
      * @param array $property
      */
-	public function edit() 
+	public function edit($id) 
 	{
 		$db = DBConnection::getConnection();
 		$query = 'UPDATE NEWS SET $property
                   WHERE $id=?';
         $stmt  = $db->prepare($query);
-        $stmt->execute();
+        $stmt->execute([$id]);
 	}
 
     /**
@@ -126,12 +126,32 @@ class News implements JsonSerializable
      *
      * @param int $id
      */
-	public function delete() 
+	public function delete($id) 
 	{
         $db = DBConnection::getConnection();
         $query = 'DELETE FROM NEWS
-                  WHERE $id = ?';
+                  WHERE ID = ?';
         $stmt  = $db->prepare($query);
-        $stmt->execute();
-	}
+        $stmt->execute([$id]);
+    }
+    
+    /*  
+    protected $date;
+    protected $title;
+    protected $information;
+    protected $category;
+    */
+
+
+    public function setdate($date) { $this->date = $date; }
+    public function getDate() { return $this->date; }
+
+    public function settitle($title) { $this->title = $title; }
+    public function getTitle() { return $this->title; }
+
+    public function setCategory($category) { $this->category = $category; }
+    public function getCategory() { return $this->category; }
+
+    public function setInformation($information) { $this->information = $information; }
+    public function getInformation() { return $this->information; }
 }

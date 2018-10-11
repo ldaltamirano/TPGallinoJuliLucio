@@ -1,7 +1,10 @@
 <?php 
 	require 'autoload.php';
 
-
+	if(!Auth::isLogged()) {
+		header('Location: views/login.php');
+		exit;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +25,8 @@
 			Completar con texto
 		</p>
 
-		<a href="crear-pelicula.php">Agregar noticia</a>
+		<a href="actions/create_noticia.php">Agregar noticia</a>
+		<a href="actions/logout.php">Logout</a>
 		<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
