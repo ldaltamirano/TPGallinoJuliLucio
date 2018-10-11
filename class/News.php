@@ -64,18 +64,18 @@ class News{
      *
      * @param array $fila
      */
-	public function crear($row)
+	public function create($row)
 	{
 		$db = DBConnection::getConnection();
         $query = "INSERT INTO NEWS ('id', 'date', 'title', 'information','category')
-                  VALUES ('id', 'date', 'title', 'information','category')";
+                  VALUES (:id, :date, :title, :information, :category)";
         $stmt = $db->prepare($query);
         $exito = $stmt->execute([
             'id'           => $row['ID'],
             'date'         => $row['DATE'],
             'title'        => $row['TITLE'],
             'information'  => $row['INFORMATION'],
-            'category'     => $row['CATEGORY']
+            'category'     => $row['CATEGORY'],
         ]);
         
         if($exito) {
