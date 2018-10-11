@@ -25,7 +25,7 @@
 			Completar con texto
 		</p>
 
-		<a href="actions/create_noticia.php">Agregar noticia</a>
+		<a href="views/crear.php">Agregar noticia</a>
 		<a href="actions/logout.php">Logout</a>
 		<table class="table table-striped table-bordered">
 		<thead>

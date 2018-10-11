@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="fecha">Fecha</label>
-                <input type="text" name="fecha" id="fecha" class="form-control" value="<?php echo "" ?>">
+                <input type="text" name="fecha" id="fecha" class="form-control">
             </div>
             <div class="form-group">
                 <label for="categoria">Categoria</label>
@@ -25,11 +25,11 @@
             </div>
             <div class="form-group">
                 <label for="titulo">Titulo</label>
-                <input type="text" name="titulo" id="titulo" class="form-control" value="<?php echo "" ?>">
+                <input type="text" name="titulo" id="titulo" class="form-control">
             </div>
             <div class="form-group">
                 <label for="informacion">Informacion</label>
-                <textarea name="informacion" id="informacion" class="form-control"><?php echo " " ?></textarea>
+                <textarea name="informacion" id="informacion" class="form-control"></textarea>
             </div>
             
             <div id="botones">
