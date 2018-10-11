@@ -119,7 +119,6 @@ class News implements JsonSerializable
                   SET date=?,title=?,information=?,category=?
                   WHERE $id=?';
         $stmt  = $db->prepare($query);
-<<<<<<< HEAD
         $stmt->execute([
             $this->id,
             $this->date,
@@ -127,9 +126,6 @@ class News implements JsonSerializable
             $this->information,
             $this->category
         ]);
-=======
-        $stmt->execute([$id]);
->>>>>>> 071dba7543298112b760a90a21fe300c2171cd7b
 	}
 
     /**
