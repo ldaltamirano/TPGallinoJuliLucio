@@ -5,7 +5,6 @@
     <title>Noticia</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" href="../css/estilosLogin.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
     <main class="main-content container">
@@ -20,16 +19,16 @@
                 <input type="text" name="fecha" id="fecha" class="form-control" value="<?php echo "" ?>">
             </div>
             <div class="form-group">
-                <label for="genero">Categoria</label>
+                <label for="categoria">Categoria</label>
                 <select name="categoria" id="categoria" class="form-control">
                 </select>
             </div>
             <div class="form-group">
-                <label for="nombre">Titulo</label>
+                <label for="titulo">Titulo</label>
                 <input type="text" name="titulo" id="titulo" class="form-control" value="<?php echo "" ?>">
             </div>
             <div class="form-group">
-                <label for="descripcion">Informacion</label>
+                <label for="informacion">Informacion</label>
                 <textarea name="informacion" id="informacion" class="form-control"><?php echo " " ?></textarea>
             </div>
             
