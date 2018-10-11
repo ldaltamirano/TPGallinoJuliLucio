@@ -16,6 +16,10 @@
                 <input type="text" name="titulo" id="titulo" class="form-control">
             </div>
             <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="text" name="fecha" id="fecha" class="form-control" value="fecha">
+            </div>
+            <div class="form-group">
                 <label for="informacion">Información</label>
                 <textarea class="form-control" rows="5" id="informacion"></textarea>
             </div>
