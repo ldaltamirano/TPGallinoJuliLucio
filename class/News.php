@@ -87,22 +87,21 @@ class News implements JsonSerializable
 	public function create($row)
 	{
 		$db = DBConnection::getConnection();
-        $query = "INSERT INTO NEWS ('id', 'date', 'title', 'information','category')
-                  VALUES (:id, :date, :title, :information, :category)";
+        $query = "INSERT INTO news ( 'DATE', 'TITLE', 'INFORMATION','FKCATEGORY')
+                  VALUES (?, ?, ?, ?)";
         $stmt = $db->prepare($query);
         $exito = $stmt->execute([
-            'id'           => $row['ID'],
-            'date'         => $row['DATE'],
-            'title'        => $row['TITLE'],
-            'information'  => $row['INFORMATION'],
-            'category'     => $row['CATEGORY'],
+            $row['fecha'],
+            $row['titulo'],
+            $row['info'],
+            $row['categoria']
         ]);
-        
+
         if($exito) {
             $row['id'] = $db->lastInsertId();
             $this->loadData($row);
         } else {
-            throw new Exception('Error al insertar el registro.');
+            throw new Exception($exito);
         }
     }
     

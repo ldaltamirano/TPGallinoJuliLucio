@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="informacion">Información</label>
-                <textarea class="form-control" rows="5" id="informacion"></textarea>
+                <textarea class="form-control" rows="5" id="informacion" name="info"></textarea>
             </div>
             <div class="form-group">
                 <label for="categoria">Categoria</label>
@@ -29,8 +29,11 @@
                 </select>
             </div>
             
-            <button class="btn btn-primary btn-block btnIngresar">Crear noticia</button>
+            <button class="btn btn-primary btn-block">Crear noticia</button>
+            <a href="../index.php" class="btn btn-primary btn-block" id="backButton">Atras</a>
         </form>
     </main>
+    <script src="../js/ajax.js"></script>
+    <script src="../js/news.js"></script>
 </body>
 </html>
