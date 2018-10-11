@@ -39,8 +39,20 @@ main {
   padding-left: 25px;
   letter-spacing: .04em;
 }
-.btn{
-  width: 100px;
+.btn:hover{
+  background: #133c5585 !important;
+}
+.btnIngresar{
   margin-left: 500px;
+}
+.btnIngresar,#saveButton, #deleteButton,#backButton{
+  width: 150px;
+  max-height: 50px;
+  min-height: 50px;
   background-color: #133c55;
+}
+#botones{
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
 }

@@ -33,9 +33,11 @@
                 <textarea name="informacion" id="informacion" class="form-control"><?php echo " " ?></textarea>
             </div>
             
-            <button class="btn btn-primary btn-block" id="saveButton">Guardar cambios</button>
-            <button class="btn btn-primary btn-block" id="deleteButton">Borrar noticia</button>
-            <button class="btn btn-primary btn-block" id="backButton">Atras</button>
+            <div id="botones">
+                <button class="btn btn-primary btn-block" id="saveButton">Guardar cambios</button>
+                <button class="btn btn-primary btn-block" id="deleteButton">Borrar noticia</button>
+                <button class="btn btn-primary btn-block" id="backButton">Atras</button>
+            </div>
         </form>
 
         <script src="../js/ajax.js"></script>

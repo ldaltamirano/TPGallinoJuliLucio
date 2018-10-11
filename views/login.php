@@ -41,7 +41,7 @@ require '../autoload.php';
 				<label for="password">Contraseña</label>
 				<input type="password" name="password" id="password" class="form-control">
 			</div>
-			<button class="btn btn-primary btn-block">Ingresar</button>
+			<button class="btn btn-primary btn-block btnIngresar">Ingresar</button>
 		</form>
 	</main>
 </body>
