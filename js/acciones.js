@@ -15,9 +15,9 @@ window.addEventListener('DOMContentLoaded', function() {
         ajax({
             method: 'GET',
             url: '../actions/edit_news.php',
-            data: 'id=' + id,
+            data: 'id=' + id +'&fecha=' + fecha.value+'&titulo=' + titulo.value+'&categoria=' + categoria.value+'&info=' + informacion.value,
             successCallback: function(rta) {
-                let data = JSON.parse(rta);
+                location.href = "../index.php";
             }
         });
     });
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
             url: '../actions/delete_news.php',
             data: 'id=' + id,
             successCallback: function(rta) {
-                let data = JSON.parse(rta);
+                location.href = "../index.php";
             }
         });
     });
@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             } else {
-				slocation.href = "index.php";
+				location.href = "index.php";
             }
         }
     });
