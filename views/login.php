@@ -8,7 +8,8 @@ require '../autoload.php';
 <head>
 	<meta charset="utf-8">
 	<title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/estilosLogin.css">
 	<script src="../js/ajax.js"></script>
 	<script src="../js/login.js"></script>
 </head>
