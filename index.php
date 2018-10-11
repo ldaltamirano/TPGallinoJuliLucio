@@ -1,10 +1,7 @@
 <?php 
 	require 'autoload.php';
 
-	if(!Auth::isLogged()) {
-		header('Location: views/login.php');
-		exit;
-	}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +16,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
 <body>
+	<h1>Todo noticias de deporte</h1>
 	<main class="container">
 		<p class="descripcion">
 			Completar con texto
