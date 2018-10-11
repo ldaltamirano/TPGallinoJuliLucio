@@ -1,19 +1,46 @@
 window.addEventListener('DOMContentLoaded', function() {
-    let links = document.querySelectorAll('.verNoti');
-    links.forEach(function(link) {
-        link.addEventListener('click', function(ev) {
-            ev.preventDefault();
-            let idPelicula = link.getAttribute('data-id');
-            console.log("Clickeamos un link! ID: ", idPelicula);
-            ajax({
-                method: 'GET',
-                url: 'api/ver-pelicula.php',
-                data: 'id=' + idPelicula,
-                successCallback: function(rta) {
-                    // TODO: Mostrar los datos.
-                    console.log("Ver: ", rta);
-                }
-            });
-        });
+    let saveButton = $('saveButton');
+    let deleteButton = $('deleteButton');
+    let backButton = $('backButton');
+
+    let fecha = $('fecha');
+    let titulo = $('titulo');
+    let informacion = $('informacion');
+    let categoria = $('categoria');
+    let idNoticia = $('idCat');
+
+    let id = idNoticia.value;
+
+    ajax({
+        method: 'GET',
+        url: '../actions/all_categorias.php',
+        data: 'category=' + noticia.category,
+        successCallback: function(rta) {
+        }
     });
+
+    ajax({
+        method: 'GET',
+        url: '../actions/ver_noticia.php',
+        data: 'id=' + id,
+        successCallback: function(rta) {
+            var data = JSON.parse(rta);
+            if(data.status == 1) {
+                var noticia = data.noticia;
+                fecha.value = noticia.date;
+                titulo.value = noticia.title;
+                informacion.value = noticia.information;
+                ajax({
+                    method: 'GET',
+                    url: '../actions/categorias.php',
+                    data: 'category=' + noticia.category,
+                    successCallback: function(rta) {
+                    }
+                });
+            } else {
+
+            }
+        }
+    });
+   
 });
