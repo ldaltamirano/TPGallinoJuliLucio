@@ -5,9 +5,10 @@ require '../autoload.php';
 
 // Leemos todas las Películas.
 $cat = new Category;
-$cat->getCategorybyId($_GET['id']);
+$category = $cat->getCategorybyId($_GET['id']);
+
 
 echo json_encode([
 	'status' => 1,
-	'noticia' => $cat
+	'category' => $category
 ]);

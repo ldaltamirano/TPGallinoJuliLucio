@@ -13,9 +13,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
     ajax({
         method: 'GET',
-        url: '../actions/all_categorias.php',
-        data: 'category=' + noticia.category,
+        url: '../actions/all_category.php',
         successCallback: function(rta) {
+            let data = JSON.parse(rta);
+            let options = "";
+            let categorias = data.categorias;
+            for (let index = 0; index < categorias.length; index++) {
+                options += '<option value="'+categorias[index]['id']+'">'+categorias[index]['category']+'</option>';
+            }
+            categoria.innerHTML = options;
         }
     });
 
@@ -24,21 +30,29 @@ window.addEventListener('DOMContentLoaded', function() {
         url: '../actions/ver_noticia.php',
         data: 'id=' + id,
         successCallback: function(rta) {
-            var data = JSON.parse(rta);
+            let data = JSON.parse(rta);
             if(data.status == 1) {
-                var noticia = data.noticia;
+                let noticia = data.noticia;
                 fecha.value = noticia.date;
                 titulo.value = noticia.title;
                 informacion.value = noticia.information;
                 ajax({
                     method: 'GET',
-                    url: '../actions/categorias.php',
-                    data: 'category=' + noticia.category,
+                    url: '../actions/get_category.php',
+                    data: 'id=' + noticia.category,
                     successCallback: function(rta) {
+                        let data = JSON.parse(rta);
+                        let cat = data['category'];
+                        let options = categoria.getElementsByTagName('option');
+                        for (let index = 0; index < options.length; index++) {
+                            if(options[index].value == cat.id) {
+                                options[index].selected = true;
+                            }
+                        }
                     }
                 });
             } else {
-
+				location.href = "../index.php";
             }
         }
     });
