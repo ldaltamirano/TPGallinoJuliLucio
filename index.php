@@ -19,8 +19,28 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
 <body>
-	<div>
-		<h1>Pase login</h1>
-	</div>
+	<main class="container">
+		<p class="descripcion">
+			Completar con texto
+		</p>
+
+		<a href="crear-pelicula.php">Agregar noticia</a>
+		<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Categoria</th>
+				<th>Titulo</th>
+				<th>Descripcion</th>
+			</tr>
+		</thead>
+		<tbody id="main-tbody">
+
+		</tbody>
+		</table>
+	</main>
+
+	<script src="js/ajax.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

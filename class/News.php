@@ -1,14 +1,46 @@
 <?php
-class News{
-    private $id;
-    private $date;
-    private $title;
-    private $information;
-    private $category;
+class News implements JsonSerializable 
+{
+    protected $id;
+    protected $date;
+    protected $title;
+    protected $information;
+    protected $category;
 
     /** @var array Listado de todas las propiedades de noticia */
     private $property = ['id', 'date', 'title', 'information','category'];
     
+
+    /**
+     * Definimos el método JsonSerializable::jsonSerialize de la interfaz.
+     * Este método tiene que retornar lo que queremos que el json_encode()
+     * transforme a un json.
+     * Lo que sea que retornen, es lo que el json_encode va a utilizar 
+     * cuando le pidamos serializar/codificar un objeto Película.
+     *
+     * @return mixed
+     */
+    public function jsonSerialize()
+    {
+        // Variante escrita a mano.
+        /*return [
+            'id_pelicula'   => $this->id_pelicula,
+            'nombre'        => $this->nombre,
+            'genero'        => $this->genero,
+            'precio'        => $this->precio,
+            'fecha'         => $this->fecha,
+            'descripcion'   => $this->descripcion // :)
+        ];*/
+        // Variante usando el array de $propiedades
+        $salida = [];
+        foreach($this->property as $prop) {
+            // Ej: para     $prop = 'id_pelicula';
+            // Me da:       $salida['id_pelicula'] = $this->id_pelicula
+            $salida[$prop] = $this->{$prop};
+        }
+        return $salida;
+    }
+
     /**
      * Obtiene todas las Noticias de la base de datos.
      *
@@ -16,14 +48,14 @@ class News{
      */
     public function all() {
 		$db = DBConnection::getConnection();
-		$query = "SELECT * FROM NEWS";
+		$query = "SELECT * FROM news";
         $stmt  = $db->prepare($query);
         $stmt->execute();
         $exit  = [];
         while($row = $stmt->fetch()) {
             $news  = new News;
             $news->loadData($row);
-            $exit[] = $news;
+            array_push($exit, $news);
         }
         
         return $exit;
@@ -54,9 +86,9 @@ class News{
     {
         $this->id=$row['ID'];
         $this->date=$row['DATE'];
-        $this->tile=$row['TITLE'];
+        $this->title=$row['TITLE'];
         $this->information=$row['INFORMATION'];
-        $this->category=$row['CATEGORY'];
+        $this->category=$row['FKCATEGORY'];
     }
 
     /**
@@ -114,5 +146,4 @@ class News{
         $stmt  = $db->prepare($query);
         $stmt->execute();
 	}
-}
 }
