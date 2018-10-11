@@ -4,9 +4,10 @@ class News{
     private $date;
     private $title;
     private $information;
+    private $category;
 
     /** @var array Listado de todas las propiedades de noticia */
-    protected $property = ['id', 'date', 'title', 'information'];
+    private $property = ['id', 'date', 'title', 'information','category'];
     
     /**
      * Obtiene todas las Noticias de la base de datos.
@@ -21,7 +22,7 @@ class News{
         $exit  = [];
         while($row = $stmt->fetch()) {
             $news  = new News;
-            $news->cargarDatosDeArray($row);
+            $news->loadData($row);
             $exit[] = $news;
         }
         
@@ -37,11 +38,11 @@ class News{
 	{
 		$db = DBConnection::getConnection();
         $query = 'SELECT * FROM NEWS
-                WHERE id = ?';
+                  WHERE id = ?';
 		$stmt = $db->prepare($query);
         $stmt->execute([$id]);
         $row  = $stmt->fetch();
-        $this->cargarDatosDeArray($row);
+        $this->loadData($row);
 	}
     
     /**
@@ -49,11 +50,13 @@ class News{
      *
      * @param array $fila
      */
-    public function cargarDatosDeArray($row)
+    public function loadData($row)
     {
-        foreach($this->property as $pty) {
-            $this->{$pty} = $row[$pty];
-        }
+        $this->id=$row['ID'];
+        $this->date=$row['DATE'];
+        $this->tile=$row['TITLE'];
+        $this->information=$row['INFORMATION'];
+        $this->category=$row['CATEGORY'];
     }
 
     /**
@@ -64,40 +67,52 @@ class News{
 	public function crear($row)
 	{
 		$db = DBConnection::getConnection();
-        $query = "INSERT INTO NEWS ('id', 'date', 'title', 'information')
-                VALUES ('id', 'date', 'title', 'information')";
+        $query = "INSERT INTO NEWS ('id', 'date', 'title', 'information','category')
+                  VALUES ('id', 'date', 'title', 'information','category')";
         $stmt = $db->prepare($query);
         $exito = $stmt->execute([
-            'id'           => $row['id'],
-            'date'         => $row['date'],
-            'title'        => $row['title'],
-            'information'  => $row['information'],
+            'id'           => $row['ID'],
+            'date'         => $row['DATE'],
+            'title'        => $row['TITLE'],
+            'information'  => $row['INFORMATION'],
+            'category'     => $row['CATEGORY']
         ]);
         
         if($exito) {
             $row['id'] = $db->lastInsertId();
-            $this->cargarDatosDeArray($row);
+            $this->loadData($row);
         } else {
             throw new Exception('Error al insertar el registro.');
         }
-	}
-
-	public function editar() 
+    }
+    
+    /**
+     * Edita una noticia en la base de datos.
+     *
+     * @param int $id
+     * @param array $property
+     */
+	public function edit() 
 	{
 		$db = DBConnection::getConnection();
-		echo "Editando<br>";
+		$query = 'UPDATE NEWS SET $property
+                  WHERE $id=?';
+        $stmt  = $db->prepare($query);
+        $stmt->execute();
 	}
 
     /**
-     * Eliminar una noticia en la base de datos.
+     * Elimina una noticia en la base de datos.
      *
-     * @param array $fila
+     * @param int $id
      */
-	public function eliminar() 
+	public function delete() 
 	{
         $db = DBConnection::getConnection();
-        $query = 'DELETE NEWS
-                WHERE $id = ?';
+        $query = 'DELETE FROM NEWS
+                  WHERE $id = ?';
+        $stmt  = $db->prepare($query);
+        $stmt->execute();
 	}
 }
 }
