@@ -7,4 +7,4 @@
     $news->setTitle($_GET['titulo']);
     $news->setCategory($_GET['categoria']);
     $news->setInformation($_GET['info']);
-    //$news->edit($_GET['id']);
+    $news->edit($_GET['id']);

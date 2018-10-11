@@ -2,6 +2,20 @@
 body{
       background-color: #f4d35e !important;
 }
+
+a {
+    color:white;
+}
+
+table {
+    border: 2px solid black;
+}
+
+th {
+    color: white;
+    background: #133c55  !important;
+}
+
 .container{
     max-width: 1100px;
     min-width:1100px;
@@ -17,6 +31,18 @@ body{
    margin-left: 250px;
    color: #133c55;
 }
+.verNoti {
+    color: #133c55 !important;
+}
+
+.botones {
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: #133c55 !important;
+}
+
 .descripcion{
   margin: 50px;
   border-bottom: solid #133c55 .5px;
@@ -25,13 +51,14 @@ body{
   word-spacing: .3em;
 }
 .container a{
-    color: #28afb0 !important;
     margin-left: 55px;
     padding-bottom:10px;
     display:inline-block;
     letter-spacing: .05em;
     word-spacing: .3em;
+    margin-bottom: 1em;
 }
+
 a:hover{
     text-decoration: none !important;
     font-size: 1.2em;

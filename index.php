@@ -22,11 +22,15 @@
 	<main class="container">
 		<h1>Todo noticias de deporte</h1>
 		<p class="descripcion">
-			Completar con texto
+			Aca puede ver todas las noticias cargadas en nuestro sistema
 		</p>
-
-		<a href="views/crear.php">Agregar noticia</a>
-		<a href="actions/logout.php">Logout</a>
+		<div class="row">
+			<div class="col-xs-2">
+				<div class="row">
+						<a href="views/crear.php" class="btn btn-primary btn-block right center-block botones">Agregar noticia</a>
+				</div>
+			</div>
+		</div>
 		<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -34,16 +38,21 @@
 				<th>Categoria</th>
 				<th>Titulo</th>
 				<th>Descripcion</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody id="main-tbody">
 
 		</tbody>
 		</table>
+		<div class="row">
+			<div class="col-xs-2">
+				<a href="actions/logout.php" class="btn btn-primary btn-block right center-block botones">Logout</a>
+			</div>
+		</div>
 	</main>
 
 	<script src="js/ajax.js"></script>
-    <script src="js/acciones.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ function mostrarNoticias() {
                 salida += "<td>" + noti.category + "</td>";
                 salida += "<td>" + noti.title + "</td>";
                 salida += "<td>" + noti.information + "</td>";
-                salida += "<td><a href='views/noticia.php?id=" + noti.id + "' class='verNoti' data-id='" + noti.id + "'>Ver</a></td>";
+                salida += "<td><a href='views/noticia.php?id=" + noti.id + "' class='verNoti ' data-id='" + noti.id + "'>Ver</a></td>";
                 salida += '</tr>';
             });
 

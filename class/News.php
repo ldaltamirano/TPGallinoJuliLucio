@@ -87,7 +87,7 @@ class News implements JsonSerializable
 	public function create($row)
 	{
 		$db = DBConnection::getConnection();
-        $query = "INSERT INTO news ( 'DATE', 'TITLE', 'INFORMATION','FKCATEGORY')
+        $query = "INSERT INTO news ( DATE, TITLE, INFORMATION,FKCATEGORY)
                   VALUES (?, ?, ?, ?)";
         $stmt = $db->prepare($query);
         $exito = $stmt->execute([
@@ -97,10 +97,7 @@ class News implements JsonSerializable
             $row['categoria']
         ]);
 
-        if($exito) {
-            $row['id'] = $db->lastInsertId();
-            $this->loadData($row);
-        } else {
+        if(!$exito) {
             throw new Exception($exito);
         }
     }
@@ -114,17 +111,21 @@ class News implements JsonSerializable
 	public function edit($id) 
 	{
 		$db = DBConnection::getConnection();
-		$query = 'UPDATE NEWS 
-                  SET date=?,title=?,information=?,category=?
-                  WHERE $id=?';
+		$query = 'UPDATE news 
+                  SET DATE=?,TITLE=?,INFORMATION=?,FKCATEGORY=?
+                  WHERE ID=?';
         $stmt  = $db->prepare($query);
-        $stmt->execute([
-            $this->id,
+        $exito = $stmt->execute([
             $this->date,
             $this->title,
             $this->information,
-            $this->category
+            $this->category,
+            $this->id
         ]);
+
+        if(!$exito) {
+            throw new Exception("No edito la noticia");
+        }
 	}
 
     /**
